@@ -27,7 +27,7 @@ At this stage, there is limited error handling; use with care, and pay attention
 # Launch the Openstack Client
 Once you have run the setup for the first time, you can proceed from here every time, unless you want to make changes to the setup.
 * With History:
-`docker run --rm --net=host -v ./.docker_openstack_history:/root/.bash_history -ti openstack-client bash`
+`docker run --rm --net=host -v ./.mcloud_history:/root/.bash_history -ti openstack-client bash`
 * Without History:
 `docker run --rm --net=host -ti openstack-client bash`
 

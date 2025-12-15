@@ -6,6 +6,9 @@ This has been tested on Ubuntu 22 and Ubuntu 24, but should work on any system w
 
 At this stage, there is limited error handling; use with care, and pay attention to output during the setup.
 
+### Use and Attributions
+This script is completely open use. Feel free to fork or copy. No attributions are required, however, if you make improvements, feel free to make suggestions.
+
 # Prerequisites
 - Familiarity with `docker` and editing scripts to fill in your own configuration.
 - An internet connection.
@@ -54,5 +57,17 @@ openstack {command} {subcommand} help
 ```
 or using search engines looking for documentation at openstack.org.
 
+# Cleaning up when you're done
+Running `exit` from the container will exit the container, and it will delete itself. The only persistent thing is the history, if you are using the history file.
+
+If you do not want the container to clean itself up, you can drop the `--rm` flag; and then get back into the container with `docker exec -it {container-name} bash`. You can also optionally name your container.
+
+# Security considerations
+On a docker enabled host, any user with docker privileges can exec into your container, and may be able to access your session.
+
+Additionally, because of the way this client uses the host network, this docker container is fairly privileged; it is recommended that appropriate measures are taken to ensure these containers aren't run in shared spaces, as other privileged users of the host may be able to access your data in transit.
+
+A docker container is only used because it is a reliable way to lock the openstack version number, python version, and a few other key requirements; you can use the openrc.sh script outside of a docker container if you are willing to set up the OpenStack client to the same specifications; you can see what exactly is required by reviewing the Dockerfile.
+
 # Feedback and Support
-Please direct all support enquiries to support@micron21.com
+Please direct all feedback and support enquiries to support@micron21.com

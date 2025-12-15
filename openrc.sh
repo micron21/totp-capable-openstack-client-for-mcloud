@@ -73,7 +73,7 @@ export OS_IDENTITY_API_VERSION=3
 # OS_USERNAME="" # Uncomment this field and enter the username, if that would be more convenient.
 if [ -z "$OS_USERNAME" ]; then
         echo "Enter the Users Username:"
-        read -rp OS_USERNAME_INPUT
+        read -r OS_USERNAME_INPUT
         export OS_USERNAME=$OS_USERNAME_INPUT
 else
         echo "Username already set - $OS_USERNAME"
@@ -82,7 +82,7 @@ fi
 # OS_PASSWORD="" # Uncomment this field and enter the password. Note that this is very insecure.
 if [ -z "$OS_PASSWORD" ]; then
         echo "Enter the Users Password (input will not be shown):"
-        read -srp OS_PASSWORD_INPUT
+        read -sr OS_PASSWORD_INPUT
         export OS_PASSWORD=$OS_PASSWORD_INPUT
 else
         echo "Password already set..."
@@ -90,7 +90,7 @@ fi
 
 # TOTP Passcode. This can't be baked in because it changes, although if you're brave you could use a 3rd party library and enter your secret here and have that generated for you. Note that this would be incredibly insecure.
 echo "Enter the MFA TOTP 6 digit passcode:"
-read -rp OS_PASSCODE_INPUT
+read -r OS_PASSCODE_INPUT
 export OS_PASSCODE=$OS_PASSCODE_INPUT
 
 # Using the information provided, we get the Openstack Token using the client
